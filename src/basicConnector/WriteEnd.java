@@ -14,8 +14,10 @@ import java.io.PrintStream;
  * @author dsb
  */
 // this is an TupleStream adaptor that maps TupleStream to Java pipes
+// YOU WRITE TO CONNECTOR ON THIS END
+// this.out  IS OUT FOR CONNECTOR'S SENDER, NOT CONNECTOR
 public class WriteEnd   {
-    PrintStream out;
+    PrintStream out;  // out is a PrintStream coming from sender
     Connector c;
 
     WriteEnd( Connector c ) {
@@ -24,6 +26,8 @@ public class WriteEnd   {
     }
 
     public void putNextTuple( Tuple t ) throws Exception {
+        // convert tuple to string and add it to the PrintStream buffer our 
+        // sender is outputting
         String e = t.toString();
         out.println(e);
         out.flush();

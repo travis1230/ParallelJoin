@@ -12,6 +12,7 @@ import java.util.Vector;
  */
 public class Relation {
     // database is a list of relation (table) definitions
+    // THIS CAN BE USED BY CONNECTOR FOR DEBUGGING SOMEHOW
     static Vector<Relation> database = new Vector<Relation>();
 
     // used only in connectors that pass bitmaps

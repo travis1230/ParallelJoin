@@ -31,7 +31,7 @@ public class Connector {
             PipedInputStream readEnd = new PipedInputStream(writeEnd);
             out = new PrintStream(writeEnd);
             in = new BufferedReader(new InputStreamReader(readEnd));
-            all.add(this);
+            all.add(this);  // mind blown, static linked list w/ all instances
         } catch (Exception e) {
             System.err.println(this.getClass().getName() + e);
         }
