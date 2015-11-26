@@ -32,10 +32,10 @@ public class Print extends Thread{
         try {
             while (true) {
                 input = in.getNextString();
-                printTuple(input);
                 if (input == null) {
                     break;
                 }
+                printTuple(input);
             }
         } catch (Exception e) {
             ReportError.msg(this.getClass().getName() + e);

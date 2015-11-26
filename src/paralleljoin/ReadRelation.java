@@ -35,7 +35,7 @@ public class ReadRelation extends Thread implements GammaConstants{
         // Step 1: open data file and create relation
         in = new BufferedReader(
                 new InputStreamReader(new FileInputStream(filename)));
-        String line = in.readLine();
+        String line = in.readLine();  // gotta be ready
         r = createRelation(line, relationName);
         // Step 2: skip ---- line
         String underlines = in.readLine();  // just getting this out of the way
@@ -72,15 +72,14 @@ public class ReadRelation extends Thread implements GammaConstants{
         } catch(Exception e) { ReportError.msg(this, e); }
     }
 
-    public Tuple getNextTuple() throws Exception {
+    public Tuple getNextTuple() throws Exception {        
         String s = in.readLine();
-        if (s==null){
+        
+        if (s.isEmpty()){
             return null;
         }
-        return Tuple.makeTupleFromFileData(r, in.readLine());
+        Tuple t = Tuple.makeTupleFromFileData(r, s);
+        return t;
     }
     
-    public Relation getRelation() {
-        return r;
-    }
 }
