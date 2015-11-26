@@ -15,6 +15,6 @@ public interface GammaConstants {
     public static int splitLen = 4;             // how many substreams SPLIT creates and MERGE merges
     public static boolean startNAdd = false;    // monitors addition and starting of threads -- useful! leave on!
     public static int mapSize = 7;              // number of hash bits
-    public static String Rel = "RelationData/"; // directory in which to find base relations; used in ReadRelation
+    public static String Rel = "TestData/"; // directory in which to find base relations; used in ReadRelation
     
 }

@@ -5,6 +5,7 @@
 package gammaSupport;
 
 import java.util.Vector;
+import java.util.Iterator;
 
 /**
  *
@@ -24,6 +25,17 @@ public class Relation {
     String fieldNames[]; // names of fields in relation
     int counter = 0;     // how many fieldnames have been entered
 
+    public static Relation GetRelationByName(String name) {
+        Iterator<Relation> it = database.iterator();
+        while (it.hasNext()){
+            Relation r = it.next();
+            if (r.name == name){
+                return r;
+            }
+        }
+        return null;
+    }
+    
     public Relation(String name, int size) {
         this.name = name;
         this.size = size;
