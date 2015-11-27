@@ -38,7 +38,7 @@ public class ReadRelation extends Thread implements GammaConstants{
         String line = in.readLine();  // gotta be ready
         r = createRelation(line, relationName);
         // Step 2: skip ---- line
-        String underlines = in.readLine();  // just getting this out of the way
+        in.readLine();  // just getting the underlines out of the way
         // Step 3: ready to read data
         ThreadList.add(this);
     }

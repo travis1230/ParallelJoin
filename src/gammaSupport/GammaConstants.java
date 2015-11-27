@@ -16,5 +16,5 @@ public interface GammaConstants {
     public static boolean startNAdd = false;    // monitors addition and starting of threads -- useful! leave on!
     public static int mapSize = 7;              // number of hash bits
     public static String Rel = "TestData/"; // directory in which to find base relations; used in ReadRelation
-    
+    public static int joinKey = 0;
 }

@@ -16,25 +16,30 @@ import java.util.logging.Logger;
  *
  * @author travisbrannen
  */
-public class Print extends Thread{
+public class Print extends Thread implements GammaConstants{
     ReadEnd in;
     Relation r;  // required for formatting
     
-    public Print( Connector in, Relation relation) {
+    public Print( Connector in, String relationName) {
         this.in = in.getReadEnd();
-        r = relation;
+        r = Relation.GetRelationByName(relationName);
+        // TODO: print table header
         ThreadList.add(this);
     }
 
     public void run() {
+
         String input;
 
         try {
             while (true) {
                 input = in.getNextString();
+                
                 if (input == null) {
                     break;
                 }
+                
+                //System.out.println(input);
                 printTuple(input);
             }
         } catch (Exception e) {
@@ -44,7 +49,8 @@ public class Print extends Thread{
 
     }
     
-    public void printTuple(String tupleString){
+    public void printTuple(String tupleString) throws Exception{
+        // TODO: reformat print to look good with header
         Tuple t = Tuple.makeTupleFromPipeData(tupleString);
         t.println(r);
     }
