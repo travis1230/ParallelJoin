@@ -77,4 +77,42 @@ public class MainTest {
         Print p = new Print(o, joinedRelation.getRelationName());
         ThreadList.run(p);
     }
+    
+    @Test
+    public void testHSplit() throws Exception {
+        RegTest.Utility.redirectStdOut("testHSplitOut.txt");
+        splitToTwo("client");
+        splitToTwo("orders");
+        splitToTwo("parts");
+        splitToTwo("viewing");
+        splitToTwo("odetails");
+        splitToTwo("orders+odetails");
+        splitToTwo("parts+odetails");
+        splitToTwo("client+viewing");
+        Utility.validate("testHSplitOut.txt", "Correct/testHSplit.txt",true);
+    }
+    
+    public void splitToTwo(String rname) throws Exception {
+        // read-->hash--0-->print1
+        //            --1-->print2
+        System.out.println("Splitting " + rname);
+        for (int i=0; i<2; i++){  // Do it twice to print appropriately
+            ThreadList.init();
+            Connector read_hash = new Connector("readToHash");
+            ReadRelation r = new ReadRelation(rname, read_hash);
+            Relation rel = Relation.GetRelationByName(rname);
+            read_hash.setRelation(rel);
+            Connector[] hash_out_connect;
+            hash_out_connect = new Connector[2];
+            hash_out_connect[0] = new Connector("hashOutput1");
+            hash_out_connect[1] = new Connector("hashOutput2");
+            hash_out_connect[0].setRelation(rel);
+            hash_out_connect[1].setRelation(rel);
+            HSplit h = new HSplit(read_hash, hash_out_connect);
+            System.out.println("Output set " + i + ":");
+            Print p = new Print(hash_out_connect[i], rname);
+            ThreadList.run(p);
+        }
+    }
+            
 }
