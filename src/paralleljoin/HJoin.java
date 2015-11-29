@@ -28,7 +28,7 @@ public class HJoin extends Thread implements GammaConstants{
     int[] jk;
     
     
-    public HJoin(Connector in0, Connector in1, Connector out, int jk0, int jk1) {
+    public HJoin(Connector in0, Connector in1, Connector out, int jk0, int jk1){
         in = new ReadEnd[2];
         in[0] = in0.getReadEnd();
         in[1] = in1.getReadEnd();

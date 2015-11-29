@@ -14,7 +14,7 @@ import RegTest.Utility;
 
 /**
  *
- * @author travisbrannen
+ * @author travisbrannen (modified batory template code)
  */
 public class MainTest {
     
@@ -49,6 +49,9 @@ public class MainTest {
     
     @Test
     public void testHJoin() throws Exception {
+        // TODO: fix testHJoin to be correct when all joinKeys are unique
+        // fix HJoin to not store list of all matches for a joinKey (since there
+        // should only be 1)
         Utility.redirectStdOut("testHJoinOut.txt");
         join("parts", "odetails", 0, 1);
         join("client", "viewing", 0, 0);
@@ -114,5 +117,71 @@ public class MainTest {
             ThreadList.run(p);
         }
     }
-            
+    
+    @Test
+    public void testBFilter() throws Exception{
+        Utility.redirectStdOut("testBFilterOut.txt");
+        simulateBloomFilter("parts", 0);
+        simulateBloomFilter("parts", 1);
+        simulateBloomFilter("parts", 2);
+        simulateBloomFilter("client", 2);
+        Utility.validate("testBFilterOut.txt", "Correct/testBFilter.txt",true);
+    }
+    
+    public void simulateBloomFilter(String rname, int joinKey) throws Exception{
+        System.out.println("Bloom Filtering " + rname + 
+                " on joinKey " + joinKey);
+        ThreadList.init();
+        Connector read_filter = new Connector("readToFilter");
+        ReadRelation r = new ReadRelation(rname,read_filter);
+        Relation rel = Relation.GetRelationByName(rname);  // created by r
+        read_filter.setRelation(rel);  // set now after r creates
+        Connector simulator_filter = new Connector("simToFilter");
+        BloomSimulator bs = new BloomSimulator(simulator_filter);
+        simulator_filter.setRelation(Relation.dummy);
+        Connector filter_print = new Connector("filterToPrint");
+        filter_print.setRelation(rel);  // same relation created by r
+        BFilter bf = new BFilter(read_filter, simulator_filter, 
+                filter_print, joinKey);
+        Print p = new Print(filter_print, rname);
+        ThreadList.run(p);
+    }
+    
+    @Test
+    public void testBloom() throws Exception{
+        Utility.redirectStdOut("testBloomOut.txt");
+        bloom("client", 0);
+        bloom("orders", 1);
+        bloom("parts", 0);
+        bloom("viewing", 1);
+        bloom("odetails", 0);
+        bloom("orders+odetails", 1);
+        bloom("parts+odetails", 0);
+        bloom("client+viewing", 1);
+        Utility.validate("testBloomOut.txt", "Correct/testBloom.txt",true);
+    }
+    
+    public void bloom(String rname, int joinKey) throws Exception {
+        for (int i=0; i<2; i++){
+            System.out.println("Blooming " + rname);
+            ThreadList.init();
+            Connector readBloom = new Connector("readToBloom");
+            ReadRelation r = new ReadRelation(rname, readBloom);
+            Relation rel = Relation.GetRelationByName(rname);
+            readBloom.setRelation(rel);
+            Connector bloomPrintMap = new Connector("BloomToPrintBitmap");
+            bloomPrintMap.setRelation(Relation.dummy);
+            Connector bloomPrintTuples = new Connector("BloomToPrintTuples");
+            bloomPrintTuples.setRelation(rel);
+            Bloom b = new Bloom(readBloom, bloomPrintTuples, bloomPrintMap, 
+                    joinKey);
+            if (i==0){ 
+                PrintMap pMap = new PrintMap(bloomPrintMap);
+                ThreadList.run(pMap);
+            } else { 
+                Print pTuples = new Print(bloomPrintTuples, rname);
+                ThreadList.run(pTuples);
+            }
+        }
+    }
 }
