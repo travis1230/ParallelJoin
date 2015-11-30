@@ -84,18 +84,18 @@ public class MainTest {
     @Test
     public void testHSplit() throws Exception {
         RegTest.Utility.redirectStdOut("testHSplitOut.txt");
-        splitToTwo("client");
-        splitToTwo("orders");
-        splitToTwo("parts");
-        splitToTwo("viewing");
-        splitToTwo("odetails");
-        splitToTwo("orders+odetails");
-        splitToTwo("parts+odetails");
-        splitToTwo("client+viewing");
+        splitToTwo("client",0);
+        splitToTwo("orders",0);
+        splitToTwo("parts",0);
+        splitToTwo("viewing",0);
+        splitToTwo("odetails",0);
+        splitToTwo("orders+odetails",0);
+        splitToTwo("parts+odetails",0);
+        splitToTwo("client+viewing",0);
         Utility.validate("testHSplitOut.txt", "Correct/testHSplit.txt", true);
     }
 
-    public void splitToTwo(String rname) throws Exception {
+    public void splitToTwo(String rname, int jk) throws Exception {
         // read-->hash--0-->print1
         //            --1-->print2
         System.out.println("Splitting " + rname);
@@ -111,7 +111,7 @@ public class MainTest {
             hash_out_connect[1] = new Connector("hashOutput2");
             hash_out_connect[0].setRelation(rel);
             hash_out_connect[1].setRelation(rel);
-            HSplit h = new HSplit(read_hash, hash_out_connect);
+            HSplit h = new HSplit(read_hash, hash_out_connect, jk);
             System.out.println("Output set " + i + ":");
             Print p = new Print(hash_out_connect[i], rname);
             ThreadList.run(p);
@@ -389,7 +389,7 @@ public class MainTest {
             c1Split[i].setRelation(rel1);
         }
 
-        HSplit h = new HSplit(c1, c1Split);
+        HSplit h = new HSplit(c1, c1Split, jk1);
 
         Connector[] bloomTupleConnectorOuts = new Connector[GammaConstants.splitLen];
         Connector[] bitmapConnectorOuts = new Connector[GammaConstants.splitLen];
@@ -419,7 +419,7 @@ public class MainTest {
             c2Split[i].setRelation(rel2);
         }
 
-        HSplit h2 = new HSplit(c2, c2Split);
+        HSplit h2 = new HSplit(c2, c2Split, jk2);
 
         Connector[] outs = new Connector[GammaConstants.splitLen];
         Relation joinedRelation = Relation.join(rel1, rel2, jk1, jk2);
