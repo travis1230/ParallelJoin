@@ -34,7 +34,8 @@ public class BFilter extends Thread implements GammaConstants{
         • Algorithm:*/
         try {
         /*1. read bit map M*/
-            BMap m = BMap.makeBMap(bitmapIn.getNextString());
+            String nextString = bitmapIn.getNextString();
+            BMap m = BMap.makeBMap(nextString);
             while (true){
         /*2. read each tuple of B, hash its join key: if corresponding bit in M is set
         output tuple*/

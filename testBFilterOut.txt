@@ -1,0 +1,54 @@
+Bloom Filtering parts on joinKey 0
+PNO = 10800
+PNAME = Dirty_Harry
+QOH = 140
+PRICE = 14.99
+OLEVEL = 30
+
+Bloom Filtering parts on joinKey 1
+PNO = 10507
+PNAME = Land_Before_Time_II
+QOH = 156
+PRICE = 19.99
+OLEVEL = 20
+
+PNO = 10508
+PNAME = Land_Before_Time_III
+QOH = 190
+PRICE = 19.99
+OLEVEL = 20
+
+Bloom Filtering parts on joinKey 2
+PNO = 10506
+PNAME = Land_Before_Time_I
+QOH = 200
+PRICE = 19.99
+OLEVEL = 20
+
+PNO = 10701
+PNAME = When_Harry_Met_Sally
+QOH = 120
+PRICE = 19.99
+OLEVEL = 30
+
+PNO = 10800
+PNAME = Dirty_Harry
+QOH = 140
+PRICE = 14.99
+OLEVEL = 30
+
+Bloom Filtering client on joinKey 2
+CLIENTNO = CR76
+FNAME = John
+LNAME = Kay
+TELNO = 0207-774-5632
+PREFTYPE = Flat
+MAXRENT = 425
+
+CLIENTNO = CR74
+FNAME = Mike
+LNAME = Richie
+TELNO = 01475-392178
+PREFTYPE = House
+MAXRENT = 750
+

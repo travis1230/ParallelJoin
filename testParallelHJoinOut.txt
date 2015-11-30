@@ -1,0 +1,53 @@
+Joining parts with odetails
+PNO = 10508
+PNAME = Land_Before_Time_III
+QOH = 190
+PRICE = 19.99
+OLEVEL = 20
+ONO = 1020
+QTY = 2
+
+PNO = 10900
+PNAME = Dr._Zhivago
+QOH = 100
+PRICE = 24.99
+OLEVEL = 30
+ONO = 1023
+QTY = 1
+
+PNO = 10507
+PNAME = Land_Before_Time_II
+QOH = 156
+PRICE = 19.99
+OLEVEL = 20
+ONO = 1020
+QTY = 1
+
+Joining client with viewing
+CLIENTNO = CR76
+FNAME = John
+LNAME = Kay
+TELNO = 0207-774-5632
+PREFTYPE = Flat
+MAXRENT = 425
+PROPERTYNO = PG4
+VIEWDATE = 20-APR-04
+KOMMENT = too_remote
+
+Joining orders with odetails
+ONO = 1023
+CNO = 3333
+ENO = 1000
+RECEIVED = 20-JUN-97
+SHIPPED = _
+PNO = 10900
+QTY = 1
+
+ONO = 1021
+CNO = 1111
+ENO = 1000
+RECEIVED = 12-JAN-95
+SHIPPED = 15-JAN-95
+PNO = 10601
+QTY = 4
+
