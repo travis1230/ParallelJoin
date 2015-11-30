@@ -1,379 +1,141 @@
 Splitting client
 Output set 0:
-CLIENTNO = CR76
-FNAME = John
-LNAME = Kay
-TELNO = 0207-774-5632
-PREFTYPE = Flat
-MAXRENT = 425
+
+CLIENTNO   FNAME   LNAME   TELNO           PREFTYPE   MAXRENT   
+---------- ------- ------- --------------- ---------- --------- 
+CR76       John    Kay     0207-774-5632   Flat       425       
 
 Output set 1:
-CLIENTNO = CR56
-FNAME = Aline
-LNAME = Stewart
-TELNO = 0141-848-1825
-PREFTYPE = Flat
-MAXRENT = 350
 
-CLIENTNO = CR74
-FNAME = Mike
-LNAME = Richie
-TELNO = 01475-392178
-PREFTYPE = House
-MAXRENT = 750
-
-CLIENTNO = CR62
-FNAME = Mary
-LNAME = Tregear
-TELNO = 01224-196720
-PREFTYPE = Flat
-MAXRENT = 600
+CLIENTNO   FNAME   LNAME     TELNO           PREFTYPE   MAXRENT   
+---------- ------- --------- --------------- ---------- --------- 
+CR56       Aline   Stewart   0141-848-1825   Flat       350       
+CR74       Mike    Richie    01475-392178    House      750       
+CR62       Mary    Tregear   01224-196720    Flat       600       
 
 Splitting orders
 Output set 0:
-ONO = 1022
-CNO = 2222
-ENO = 1001
-RECEIVED = 13-FEB-95
-SHIPPED = 20-FEB-95
 
-ONO = 1023
-CNO = 3333
-ENO = 1000
-RECEIVED = 20-JUN-97
-SHIPPED = _
+ONO    CNO    ENO    RECEIVED    SHIPPED     
+------ ------ ------ ----------- ----------- 
+1022   2222   1001   13-FEB-95   20-FEB-95   
+1023   3333   1000   20-JUN-97   _           
 
 Output set 1:
-ONO = 1020
-CNO = 1111
-ENO = 1000
-RECEIVED = 10-DEC-94
-SHIPPED = 12-DEC-94
 
-ONO = 1021
-CNO = 1111
-ENO = 1000
-RECEIVED = 12-JAN-95
-SHIPPED = 15-JAN-95
+ONO    CNO    ENO    RECEIVED    SHIPPED     
+------ ------ ------ ----------- ----------- 
+1020   1111   1000   10-DEC-94   12-DEC-94   
+1021   1111   1000   12-JAN-95   15-JAN-95   
 
 Splitting parts
 Output set 0:
-PNO = 10506
-PNAME = Land_Before_Time_I
-QOH = 200
-PRICE = 19.99
-OLEVEL = 20
 
-PNO = 10507
-PNAME = Land_Before_Time_II
-QOH = 156
-PRICE = 19.99
-OLEVEL = 20
-
-PNO = 10508
-PNAME = Land_Before_Time_III
-QOH = 190
-PRICE = 19.99
-OLEVEL = 20
-
-PNO = 10601
-PNAME = Sleeping_Beauty
-QOH = 300
-PRICE = 24.99
-OLEVEL = 20
-
-PNO = 10701
-PNAME = When_Harry_Met_Sally
-QOH = 120
-PRICE = 19.99
-OLEVEL = 30
-
-PNO = 10800
-PNAME = Dirty_Harry
-QOH = 140
-PRICE = 14.99
-OLEVEL = 30
-
-PNO = 10900
-PNAME = Dr._Zhivago
-QOH = 100
-PRICE = 24.99
-OLEVEL = 30
+PNO     PNAME                  QOH   PRICE   OLEVEL   
+------- ---------------------- ----- ------- -------- 
+10506   Land_Before_Time_I     200   19.99   20       
+10507   Land_Before_Time_II    156   19.99   20       
+10508   Land_Before_Time_III   190   19.99   20       
+10601   Sleeping_Beauty        300   24.99   20       
+10701   When_Harry_Met_Sally   120   19.99   30       
+10800   Dirty_Harry            140   14.99   30       
+10900   Dr._Zhivago            100   24.99   30       
 
 Output set 1:
-PNO = 10509
-PNAME = Land_Before_Time_IV
-QOH = 60
-PRICE = 19.99
-OLEVEL = 20
+
+PNO     PNAME                 QOH   PRICE   OLEVEL   
+------- --------------------- ----- ------- -------- 
+10509   Land_Before_Time_IV   60    19.99   20       
 
 Splitting viewing
 Output set 0:
-CLIENTNO = CR56
-PROPERTYNO = PA14
-VIEWDATE = 24-MAY-04
-KOMMENT = too_small
 
-CLIENTNO = CR76
-PROPERTYNO = PG4
-VIEWDATE = 20-APR-04
-KOMMENT = too_remote
-
-CLIENTNO = CR56
-PROPERTYNO = PG4
-VIEWDATE = 26-MAY-04
-KOMMENT = _
+CLIENTNO   PROPERTYNO   VIEWDATE    KOMMENT      
+---------- ------------ ----------- ------------ 
+CR56       PA14         24-MAY-04   too_small    
+CR76       PG4          20-APR-04   too_remote   
+CR56       PG4          26-MAY-04   _            
 
 Output set 1:
-CLIENTNO = CR62
-PROPERTYNO = PA14
-VIEWDATE = 14-MAY-04
-KOMMENT = no_dining_room
 
-CLIENTNO = CR56
-PROPERTYNO = PG36
-VIEWDATE = 28-APR-04
-KOMMENT = _
+CLIENTNO   PROPERTYNO   VIEWDATE    KOMMENT          
+---------- ------------ ----------- ---------------- 
+CR62       PA14         14-MAY-04   no_dining_room   
+CR56       PG36         28-APR-04   _                
 
 Splitting odetails
 Output set 0:
-ONO = 1020
-PNO = 10507
-QTY = 1
 
-ONO = 1020
-PNO = 10508
-QTY = 2
-
-ONO = 1020
-PNO = 10509
-QTY = 3
-
-ONO = 1022
-PNO = 10701
-QTY = 1
-
-ONO = 1023
-PNO = 10900
-QTY = 1
+ONO    PNO     QTY   
+------ ------- ----- 
+1020   10507   1     
+1020   10508   2     
+1020   10509   3     
+1022   10701   1     
+1023   10900   1     
 
 Output set 1:
-ONO = 1020
-PNO = 10506
-QTY = 1
 
-ONO = 1021
-PNO = 10601
-QTY = 4
-
-ONO = 1022
-PNO = 10601
-QTY = 1
-
-ONO = 1023
-PNO = 10800
-QTY = 1
+ONO    PNO     QTY   
+------ ------- ----- 
+1020   10506   1     
+1021   10601   4     
+1022   10601   1     
+1023   10800   1     
 
 Splitting orders+odetails
 Output set 0:
-ONO = 1020
-PNO = 10506
-QTY = 1
-CNO = 1111
-ENO = 1000
-RECEIVED = 10-DEC-94
-SHIPPED = 12-DEC-94
 
-ONO = 1022
-PNO = 10701
-QTY = 1
-CNO = 2222
-ENO = 1001
-RECEIVED = 13-FEB-95
-SHIPPED = 20-FEB-95
-
-ONO = 1023
-PNO = 10800
-QTY = 1
-CNO = 3333
-ENO = 1000
-RECEIVED = 20-JUN-97
-SHIPPED = _
+ONO    PNO     QTY   CNO    ENO    RECEIVED    SHIPPED     
+------ ------- ----- ------ ------ ----------- ----------- 
+1020   10506   1     1111   1000   10-DEC-94   12-DEC-94   
+1022   10701   1     2222   1001   13-FEB-95   20-FEB-95   
+1023   10800   1     3333   1000   20-JUN-97   _           
 
 Output set 1:
-ONO = 1020
-PNO = 10507
-QTY = 1
-CNO = 1111
-ENO = 1000
-RECEIVED = 10-DEC-94
-SHIPPED = 12-DEC-94
 
-ONO = 1020
-PNO = 10508
-QTY = 2
-CNO = 1111
-ENO = 1000
-RECEIVED = 10-DEC-94
-SHIPPED = 12-DEC-94
-
-ONO = 1020
-PNO = 10509
-QTY = 3
-CNO = 1111
-ENO = 1000
-RECEIVED = 10-DEC-94
-SHIPPED = 12-DEC-94
-
-ONO = 1021
-PNO = 10601
-QTY = 4
-CNO = 1111
-ENO = 1000
-RECEIVED = 12-JAN-95
-SHIPPED = 15-JAN-95
-
-ONO = 1022
-PNO = 10601
-QTY = 1
-CNO = 2222
-ENO = 1001
-RECEIVED = 13-FEB-95
-SHIPPED = 20-FEB-95
-
-ONO = 1023
-PNO = 10900
-QTY = 1
-CNO = 3333
-ENO = 1000
-RECEIVED = 20-JUN-97
-SHIPPED = _
+ONO    PNO     QTY   CNO    ENO    RECEIVED    SHIPPED     
+------ ------- ----- ------ ------ ----------- ----------- 
+1020   10507   1     1111   1000   10-DEC-94   12-DEC-94   
+1020   10508   2     1111   1000   10-DEC-94   12-DEC-94   
+1020   10509   3     1111   1000   10-DEC-94   12-DEC-94   
+1021   10601   4     1111   1000   12-JAN-95   15-JAN-95   
+1022   10601   1     2222   1001   13-FEB-95   20-FEB-95   
+1023   10900   1     3333   1000   20-JUN-97   _           
 
 Splitting parts+odetails
 Output set 0:
-PNO = 10506
-PNAME = Land_Before_Time_I
-QOH = 200
-PRICE = 19.99
-OLEVEL = 20
-ONO = 1020
-QTY = 1
 
-PNO = 10507
-PNAME = Land_Before_Time_II
-QOH = 156
-PRICE = 19.99
-OLEVEL = 20
-ONO = 1020
-QTY = 1
-
-PNO = 10601
-PNAME = Sleeping_Beauty
-QOH = 300
-PRICE = 24.99
-OLEVEL = 20
-ONO = 1021
-QTY = 4
-
-PNO = 10601
-PNAME = Sleeping_Beauty
-QOH = 300
-PRICE = 24.99
-OLEVEL = 20
-ONO = 1022
-QTY = 1
-
-PNO = 10701
-PNAME = When_Harry_Met_Sally
-QOH = 120
-PRICE = 19.99
-OLEVEL = 30
-ONO = 1022
-QTY = 1
+PNO     PNAME                  QOH   PRICE   OLEVEL   ONO    QTY   
+------- ---------------------- ----- ------- -------- ------ ----- 
+10506   Land_Before_Time_I     200   19.99   20       1020   1     
+10507   Land_Before_Time_II    156   19.99   20       1020   1     
+10601   Sleeping_Beauty        300   24.99   20       1021   4     
+10601   Sleeping_Beauty        300   24.99   20       1022   1     
+10701   When_Harry_Met_Sally   120   19.99   30       1022   1     
 
 Output set 1:
-PNO = 10508
-PNAME = Land_Before_Time_III
-QOH = 190
-PRICE = 19.99
-OLEVEL = 20
-ONO = 1020
-QTY = 2
 
-PNO = 10509
-PNAME = Land_Before_Time_IV
-QOH = 60
-PRICE = 19.99
-OLEVEL = 20
-ONO = 1020
-QTY = 3
-
-PNO = 10800
-PNAME = Dirty_Harry
-QOH = 140
-PRICE = 14.99
-OLEVEL = 30
-ONO = 1023
-QTY = 1
-
-PNO = 10900
-PNAME = Dr._Zhivago
-QOH = 100
-PRICE = 24.99
-OLEVEL = 30
-ONO = 1023
-QTY = 1
+PNO     PNAME                  QOH   PRICE   OLEVEL   ONO    QTY   
+------- ---------------------- ----- ------- -------- ------ ----- 
+10508   Land_Before_Time_III   190   19.99   20       1020   2     
+10509   Land_Before_Time_IV    60    19.99   20       1020   3     
+10800   Dirty_Harry            140   14.99   30       1023   1     
+10900   Dr._Zhivago            100   24.99   30       1023   1     
 
 Splitting client+viewing
 Output set 0:
-CLIENTNO = CR56
-PROPERTYNO = PA14
-VIEWDATE = 24-MAY-04
-KOMMENT = too_small
-FNAME = Aline
-LNAME = Stewart
-TELNO = 0141-848-1825
-PREFTYPE = Flat
-MAXRENT = 350
 
-CLIENTNO = CR56
-PROPERTYNO = PG4
-VIEWDATE = 26-MAY-04
-KOMMENT = _
-FNAME = Aline
-LNAME = Stewart
-TELNO = 0141-848-1825
-PREFTYPE = Flat
-MAXRENT = 350
-
-CLIENTNO = CR62
-PROPERTYNO = PA14
-VIEWDATE = 14-MAY-04
-KOMMENT = no_dining_room
-FNAME = Mary
-LNAME = Tregear
-TELNO = 01224-196720
-PREFTYPE = Flat
-MAXRENT = 600
+CLIENTNO   PROPERTYNO   VIEWDATE    KOMMENT          FNAME   LNAME     TELNO           PREFTYPE   MAXRENT   
+---------- ------------ ----------- ---------------- ------- --------- --------------- ---------- --------- 
+CR56       PA14         24-MAY-04   too_small        Aline   Stewart   0141-848-1825   Flat       350       
+CR56       PG4          26-MAY-04   _                Aline   Stewart   0141-848-1825   Flat       350       
+CR62       PA14         14-MAY-04   no_dining_room   Mary    Tregear   01224-196720    Flat       600       
 
 Output set 1:
-CLIENTNO = CR76
-PROPERTYNO = PG4
-VIEWDATE = 20-APR-04
-KOMMENT = too_remote
-FNAME = John
-LNAME = Kay
-TELNO = 0207-774-5632
-PREFTYPE = Flat
-MAXRENT = 425
 
-CLIENTNO = CR56
-PROPERTYNO = PG36
-VIEWDATE = 28-APR-04
-KOMMENT = _
-FNAME = Aline
-LNAME = Stewart
-TELNO = 0141-848-1825
-PREFTYPE = Flat
-MAXRENT = 350
+CLIENTNO   PROPERTYNO   VIEWDATE    KOMMENT      FNAME   LNAME     TELNO           PREFTYPE   MAXRENT   
+---------- ------------ ----------- ------------ ------- --------- --------------- ---------- --------- 
+CR76       PG4          20-APR-04   too_remote   John    Kay       0207-774-5632   Flat       425       
+CR56       PG36         28-APR-04   _            Aline   Stewart   0141-848-1825   Flat       350       
 
