@@ -16,38 +16,35 @@ import basicConnector.*;
 public class HSplit extends Thread implements GammaConstants{
     ReadEnd in;
     WriteEnd[] out;
+    int jk;
 
-    HSplit(Connector in, Connector connector_out[]) {
+    HSplit(Connector in, Connector connector_out[], int joinKey) {
         this.in = in.getReadEnd();
         out = new WriteEnd[connector_out.length];
         for (int i=0; i<out.length; i++){
             this.out[i] = connector_out[i].getWriteEnd();
         
         }
+        jk = joinKey;
         ThreadList.add(this);
 
     }
 
      public void run() {
         try {
-            String input;
+            Tuple input;
             while (true) {
-                input = in.getNextString();
+                input = in.getNextTuple();
                 if (input == null) {
                     break;
                 }
-                int hash = myhash(input);
-                out[hash].putNextString(input);
+                int hash = BMap.myhash(input.get(jk)) % out.length;
                 //System.out.println( hash + " " + input );
+                out[hash].putNextString(input.toString());
             }
             for (int i = 0; i < out.length; i++) { out[i].close(); }
         } catch (Exception e) {
             ReportError.msg(this.getClass().getName() + e);
         }
     }
-
-    int myhash(String s) {
-        return (Math.abs(s.hashCode()) % out.length);
-    }
-
 }

@@ -41,6 +41,7 @@ public class Bloom extends Thread implements GammaConstants{
                     break;
                 }
                 m.setValue(t.get(jk), true);
+                //System.out.println("Tuple:" + t.toString() + "\nHash Filter: " + m.getBloomFilter());
         // 3. output each tuple A
                 tupleOut.putNextTuple(t);
             }

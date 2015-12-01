@@ -44,8 +44,7 @@ public class HJoin extends Thread implements GammaConstants{
     public void run(){
 
         // 1. read all of stream A into a main memory hash table
-        HashMap<String, LinkedList<Tuple>> joinHash = new HashMap<
-                String, LinkedList<Tuple>>();
+        HashMap<String, Tuple> joinHash = new HashMap<String, Tuple>();
         Tuple nextTuple;
         try {
             while (true){
@@ -54,9 +53,8 @@ public class HJoin extends Thread implements GammaConstants{
                     break;
                 }
                 // joinHash = first table
-                LinkedList<Tuple> ll = new LinkedList();
-                ll.add(nextTuple);
-                joinHash.put(nextTuple.get(jk[0]), ll);
+                //System.out.println(nextTuple.toString());
+                joinHash.put(nextTuple.get(jk[0]), nextTuple);
             }
         // 2. read B stream one tuple at a time;
         // hash join key of B’s tuple and join it to all A tuple’s with the same join key
@@ -69,22 +67,14 @@ public class HJoin extends Thread implements GammaConstants{
                 // add second table one tuple at a time, joining with shared
                 // joinkey from first table
                 String matchingKey = nextTuple.get(jk[1]);
-                LinkedList<Tuple> ll = joinHash.get(matchingKey);
-                Tuple t = ll.getFirst();  // first one is the unjoined
-                Tuple joinedTuple = Tuple.join(t, nextTuple, jk[0], jk[1]);
-                ll.add(joinedTuple);
-                joinHash.put(matchingKey, ll);
-            }
+                Tuple t = joinHash.get(matchingKey);
         // 3.  Pass joinHash tuples to output pipe
-            for (Map.Entry<String, LinkedList<Tuple>> entry : joinHash.entrySet()){
-                Iterator<Tuple> iterator = entry.getValue().iterator();
-                boolean first = true;
-                while(iterator.hasNext()){
-                    Tuple t = iterator.next();
-                    if (first){ first = false; }  // first is unjoined
-                    else { w.putNextTuple(t); }
-                }
+                //System.out.println(nextTuple.toString());
+                Tuple joinedTuple = Tuple.join(t, nextTuple, jk[0], jk[1]);
+                //System.out.println(joinedTuple.toString());
+                w.putNextTuple(joinedTuple);
             }
+
             w.close();
         } catch (Exception e) { ReportError.msg(this, e); }    
     }

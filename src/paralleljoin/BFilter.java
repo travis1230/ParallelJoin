@@ -36,6 +36,7 @@ public class BFilter extends Thread implements GammaConstants{
         /*1. read bit map M*/
             String nextString = bitmapIn.getNextString();
             BMap m = BMap.makeBMap(nextString);
+            //System.out.println(m.getBloomFilter());
             while (true){
         /*2. read each tuple of B, hash its join key: if corresponding bit in M is set
         output tuple*/
@@ -45,8 +46,11 @@ public class BFilter extends Thread implements GammaConstants{
                     break;
                 }
                 if (m.getValue(nextTuple.get(jk))){
+                    //System.out.println("Forwarding " + nextTuple.toString());
                     tupleOut.putNextTuple(nextTuple);
-                }
+                } //else {
+                    //System.out.println("Filtering " + nextTuple.toString());
+                //}
         /*3. else discard tuple as it will never join with A tuples*/
             }
         } catch (Exception e) { ReportError.msg(this, e); }
