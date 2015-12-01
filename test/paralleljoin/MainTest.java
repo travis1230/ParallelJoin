@@ -294,9 +294,9 @@ public class MainTest {
         Connector[] o = {c1, c2, c3, c4};
         MSplit msplit = new MSplit(bloomPrintMap, o);
 
-        PrintMap pMap = new PrintMap(c1);
-        PrintMap pMap2 = new PrintMap(c2);
-        PrintMap pMap3 = new PrintMap(c3);
+        //PrintMap pMap = new PrintMap(c1);
+        //PrintMap pMap2 = new PrintMap(c2);
+        //PrintMap pMap3 = new PrintMap(c3);
         PrintMap pMap4 = new PrintMap(c4);
         ThreadList.run(pMap4);
     }

@@ -1,40 +1,16 @@
 Splitting map for: client
-fftffftfffffffffffffffffffff
 fffffffffffffffffffffftfffff
-ffffffffffffffftffffffffffff
-ffffffffffffffffffffffffffff
 Splitting map for: orders
 ffffffffffffffffffffffffffff
-ffffffffffffffffffffffffffff
-tfftftffffffffffffffffffffff
-ffffffffffffffffffffffffffff
 Splitting map for: parts
-ftfftfffffffffffffffffffffff
 ffffffffffffffffffffftffffff
-fffffffffffffffffffftfffffff
-fffffffffftttfffffffffffffff
 Splitting map for: viewing
-fffftfffffffffffffffffffffff
-ffffffffffffffffftffffffffff
 ffffffffffffffffffffffffffff
-fffffffffffftfffffffffffffff
 Splitting map for: odetails
-ffftffffffffffffffffffffffff
-ffffffffffffffftffffffffffff
 ffffffffffffffffffffffftffff
-ffffffftffffffffffffffffffff
 Splitting map for: orders+odetails
-ftfftfffffffffffffffffffffff
 ffffffffffffffffffffftffffff
-fffffffffffffffffffftfffffff
-fffffffffftttfffffffffffffff
 Splitting map for: parts+odetails
-ftfftfffffffffffffffffffffff
-fffffffffftttfffffffffffffff
-fffffffffffffffffffftfffffff
 ffffffffffffffffffffftffffff
 Splitting map for: client+viewing
-fffftfffffffffffffffffffffff
-fffffffffffftfffffffffffffff
-ffffffffffffffffftffffffffff
 ffffffffffffffffffffffffffff
