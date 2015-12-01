@@ -35,13 +35,10 @@ public class MapReduceHJoin {
         Relation rel2 = Relation.GetRelationByName(r2name);
         c2.setRelation(rel2);
 
-        String joinedName = r1name + "+" + r2name;
-        Relation joinedRelation = Relation.join(rel1, rel2, jk1, jk2);
-
         Connector c1Split[] = new Connector[GammaConstants.splitLen];
         for (int i = 0; i < c1Split.length; ++i) {
             c1Split[i] = new Connector("c1Split" + i);
-            c1Split[i].setRelation(joinedRelation);
+            c1Split[i].setRelation(rel1);
         }
 
         HSplit h = new HSplit(c1, c1Split, jk1);
@@ -53,14 +50,15 @@ public class MapReduceHJoin {
         }
 
         HSplit h2 = new HSplit(c2, c2Split, jk2);
-
+        
+        String joinedName = r1name + "+" + r2name;
+        Relation joinedRelation = Relation.join(rel1, rel2, jk1, jk2);
+        
         Connector[] outs = new Connector[GammaConstants.splitLen];
         for (int i = 0; i < GammaConstants.splitLen; ++i) {
             outs[i] = new Connector("output");
             outs[i].setRelation(joinedRelation);
-
-            HJoin hj = new HJoin(c2Split[i], c2Split[i], outs[i], jk1, jk2);
-
+            HJoin hj = new HJoin(c1Split[i], c2Split[i], outs[i], jk1, jk2);
         }
 
         Connector o = new Connector("output");
