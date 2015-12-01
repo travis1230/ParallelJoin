@@ -17,7 +17,7 @@ public class MSplit extends Thread implements GammaConstants{
     ReadEnd in;
     WriteEnd[] out;
 
-    MSplit(Connector connector_in, Connector connector_out[]) {
+    public MSplit(Connector connector_in, Connector connector_out[]) {
         this.in = connector_in.getReadEnd();
         out = new WriteEnd[connector_out.length];
         for (int i=0; i<out.length; i++){

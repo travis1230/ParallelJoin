@@ -18,7 +18,7 @@ public class HSplit extends Thread implements GammaConstants{
     WriteEnd[] out;
     int jk;
 
-    HSplit(Connector in, Connector connector_out[], int joinKey) {
+    public HSplit(Connector in, Connector connector_out[], int joinKey) {
         this.in = in.getReadEnd();
         out = new WriteEnd[connector_out.length];
         for (int i=0; i<out.length; i++){
@@ -32,7 +32,7 @@ public class HSplit extends Thread implements GammaConstants{
 
      public void run() {
         try {
-            Tuple input;
+            Tuple input;           
             while (true) {
                 input = in.getNextTuple();
                 if (input == null) {
@@ -40,7 +40,7 @@ public class HSplit extends Thread implements GammaConstants{
                 }
                 int hash = BMap.myhash(input.get(jk)) % out.length;
                 //System.out.println( hash + " " + input );
-                out[hash].putNextString(input.toString());
+                out[hash].putNextTuple(input);
             }
             for (int i = 0; i < out.length; i++) { out[i].close(); }
         } catch (Exception e) {

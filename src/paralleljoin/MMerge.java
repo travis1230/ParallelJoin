@@ -17,7 +17,7 @@ public class MMerge extends Thread implements GammaConstants{
     ReadEnd[] in;
     WriteEnd out;
 
-    MMerge(Connector connector_in[], Connector connector_out) {
+    public MMerge(Connector connector_in[], Connector connector_out) {
         this.out = connector_out.getWriteEnd();
         this.in = new ReadEnd[connector_in.length];
         for (int i=0; i<in.length; i++){

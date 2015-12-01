@@ -1,0 +1,12 @@
+#!/bin/bash
+echo ""
+java -jar dist/ParallelJoin.jar 
+echo ""
+echo ""
+echo "Displaying the output from the Final Optimized Parallel HJoin Algorithm:"
+echo "" 
+FILE="Output/testOptimizedParallelHJoinOut.txt"
+echo "*** File - $FILE contents ***"
+cat $FILE
+rm sortedCor.txt
+rm sortedOut.txt

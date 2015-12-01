@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package paralleljoin;
+package test.paralleljoin;
 
+import paralleljoin.*;
 import org.junit.Test;
 
 import gammaSupport.*;
 import basicConnector.*;
-
-import RegTest.Utility;
 
 
 /**
@@ -20,12 +19,12 @@ import RegTest.Utility;
 public class MainTest {
 
     public MainTest() {
-        test.paralleljoin.Utility.init();
+        Utility.init();
     }
 
     @Test
     public void testReadRelation() throws Exception {
-        test.paralleljoin.Utility.redirectStdOut("Output/testReadRelationOut.txt");
+        Utility.redirectStdOut("Output/testReadRelationOut.txt");
         read("client");
         read("orders");
         read("parts");
@@ -34,7 +33,7 @@ public class MainTest {
         read("orders+odetails");
         read("parts+odetails");
         read("client+viewing");
-        test.paralleljoin.Utility.validate("Output/testReadRelationOut.txt",
+        Utility.validate("Output/testReadRelationOut.txt",
                 "Correct/testRR.txt", false);
     }
 
@@ -51,11 +50,11 @@ public class MainTest {
     @Test
     public void testHJoin() throws Exception {
 
-        test.paralleljoin.Utility.redirectStdOut("Output/testHJoinOut.txt");
+        Utility.redirectStdOut("Output/testHJoinOut.txt");
         join("parts", "odetails", 0, 1);
         join("client", "viewing", 0, 0);
         join("orders", "odetails", 0, 0);
-        test.paralleljoin.Utility.validate("Output/testHJoinOut.txt", "Correct/testHJoin.txt", true);
+        Utility.validate("Output/testHJoinOut.txt", "Correct/testHJoin.txt", true);
     }
 
     public void join(String r1name, String r2name, int jk1, int jk2
@@ -82,11 +81,11 @@ public class MainTest {
 
     @Test
     public void testParallelHJoin() throws Exception {
-        test.paralleljoin.Utility.redirectStdOut("Output/testParallelHJoinOut.txt");
+        Utility.redirectStdOut("Output/testParallelHJoinOut.txt");
         parallelJoin("parts", "odetails", 0, 1);
         parallelJoin("client", "viewing", 0, 0);
         parallelJoin("orders", "odetails", 0, 0);
-        test.paralleljoin.Utility.validate("Output/testParallelHJoinOut.txt", "Correct/testParallelHJoin.txt", true);
+        Utility.validate("Output/testParallelHJoinOut.txt", "Correct/testParallelHJoin.txt", true);
     }
 
     public void parallelJoin(String r1name, String r2name, int jk1, int jk2
@@ -143,7 +142,7 @@ public class MainTest {
 
     @Test
     public void testHSplit() throws Exception {
-        test.paralleljoin.Utility.redirectStdOut("Output/testHSplitOut.txt");
+        Utility.redirectStdOut("Output/testHSplitOut.txt");
         splitToTwo("client", 0);
         splitToTwo("orders", 0);
         splitToTwo("parts", 0);
@@ -152,7 +151,7 @@ public class MainTest {
         splitToTwo("orders+odetails", 0);
         splitToTwo("parts+odetails", 0);
         splitToTwo("client+viewing", 0);
-        test.paralleljoin.Utility.validate("Output/testHSplitOut.txt", "Correct/testHSplit.txt", true);
+        Utility.validate("Output/testHSplitOut.txt", "Correct/testHSplit.txt", true);
     }
 
     public void splitToTwo(String rname, int jk) throws Exception {
@@ -180,12 +179,12 @@ public class MainTest {
 
     @Test
     public void testBFilter() throws Exception {
-        test.paralleljoin.Utility.redirectStdOut("Output/testBFilterOut.txt");
+        Utility.redirectStdOut("Output/testBFilterOut.txt");
         simulateBloomFilter("parts", 0);
         simulateBloomFilter("parts", 1);
         simulateBloomFilter("parts", 2);
         simulateBloomFilter("client", 2);
-        test.paralleljoin.Utility.validate("Output/testBFilterOut.txt", "Correct/testBFilter.txt", true);
+        Utility.validate("Output/testBFilterOut.txt", "Correct/testBFilter.txt", true);
     }
 
     public void simulateBloomFilter(String rname, int joinKey) throws Exception {
@@ -209,12 +208,12 @@ public class MainTest {
 
     @Test
     public void testParallelBFilter() throws Exception {
-        test.paralleljoin.Utility.redirectStdOut("Output/testParallelBFilterOut.txt");
+        Utility.redirectStdOut("Output/testParallelBFilterOut.txt");
         simulateParallelBloomFilter("parts", 0);
         simulateParallelBloomFilter("parts", 1);
         simulateParallelBloomFilter("parts", 2);
         simulateParallelBloomFilter("client", 2);
-        test.paralleljoin.Utility.validate("Output/testParallelBFilterOut.txt", "Correct/testBFilter.txt", true);
+        Utility.validate("Output/testParallelBFilterOut.txt", "Correct/testBFilter.txt", true);
     }
 
     public void simulateParallelBloomFilter(String rname, int joinKey) throws Exception {
@@ -265,7 +264,7 @@ public class MainTest {
 
     @Test
     public void testBloom() throws Exception {
-        test.paralleljoin.Utility.redirectStdOut("Output/testBloomOut.txt");
+        Utility.redirectStdOut("Output/testBloomOut.txt");
         bloom("client", 0);
         bloom("orders", 1);
         bloom("parts", 0);
@@ -274,7 +273,7 @@ public class MainTest {
         bloom("orders+odetails", 1);
         bloom("parts+odetails", 0);
         bloom("client+viewing", 1);
-        test.paralleljoin.Utility.validate("Output/testBloomOut.txt", "Correct/testBloom.txt", true);
+        Utility.validate("Output/testBloomOut.txt", "Correct/testBloom.txt", true);
     }
 
     public void bloom(String rname, int joinKey) throws Exception {
@@ -303,7 +302,7 @@ public class MainTest {
 
     @Test
     public void testParallelBloom() throws Exception {
-        test.paralleljoin.Utility.redirectStdOut("Output/testParallelBloomOut.txt");
+        Utility.redirectStdOut("Output/testParallelBloomOut.txt");
         parallelBloom("client", 0);
         parallelBloom("orders", 1);
         parallelBloom("parts", 0);
@@ -312,7 +311,7 @@ public class MainTest {
         parallelBloom("orders+odetails", 1);
         parallelBloom("parts+odetails", 0);
         parallelBloom("client+viewing", 1);
-        test.paralleljoin.Utility.validate("Output/testParallelBloomOut.txt", "Correct/testBloom.txt", true);
+        Utility.validate("Output/testParallelBloomOut.txt", "Correct/testBloom.txt", true);
     }
 
     public void parallelBloom(String rname, int joinKey) throws Exception {
@@ -366,11 +365,11 @@ public class MainTest {
 
     @Test
     public void testMerge() throws Exception {
-        test.paralleljoin.Utility.redirectStdOut("Output/testMergeOut.txt");
+        Utility.redirectStdOut("Output/testMergeOut.txt");
         merge("parts", "parts");
         merge("client", "client");
         merge("odetails", "odetails");
-        test.paralleljoin.Utility.validate("Output/testMergeOut.txt", "Correct/testMerge.txt", true);
+        Utility.validate("Output/testMergeOut.txt", "Correct/testMerge.txt", true);
     }
 
     public void merge(String r1name, String r2name) throws Exception {
@@ -396,7 +395,7 @@ public class MainTest {
 
     @Test
     public void testMSplit() throws Exception {
-        test.paralleljoin.Utility.redirectStdOut("Output/testMSplitOut.txt");
+        Utility.redirectStdOut("Output/testMSplitOut.txt");
         MSplitToFour("client", 0);
         MSplitToFour("orders", 1);
         MSplitToFour("parts", 0);
@@ -405,7 +404,7 @@ public class MainTest {
         MSplitToFour("orders+odetails", 1);
         MSplitToFour("parts+odetails", 0);
         MSplitToFour("client+viewing", 1);
-        test.paralleljoin.Utility.validate("Output/testMSplitOut.txt", "Correct/testMSplit.txt", true);
+        Utility.validate("Output/testMSplitOut.txt", "Correct/testMSplit.txt", true);
     }
 
     public void MSplitToFour(String rname, int joinKey) throws Exception {
@@ -446,7 +445,7 @@ public class MainTest {
 
     @Test
     public void testMMerge() throws Exception {
-        test.paralleljoin.Utility.redirectStdOut("Output/testMMergeOut.txt");
+        Utility.redirectStdOut("Output/testMMergeOut.txt");
         MMergeFour("client", 0);
         MMergeFour("orders", 1);
         MMergeFour("parts", 0);
@@ -455,7 +454,7 @@ public class MainTest {
         MMergeFour("orders+odetails", 1);
         MMergeFour("parts+odetails", 0);
         MMergeFour("client+viewing", 1);
-        test.paralleljoin.Utility.validate("Output/testMMergeOut.txt", "Correct/testMMerge.txt", true);
+        Utility.validate("Output/testMMergeOut.txt", "Correct/testMMerge.txt", true);
     }
 
     public void MMergeFour(String rname, int joinKey) throws Exception {
@@ -498,11 +497,11 @@ public class MainTest {
 
     @Test
     public void testHJoinFirstRefinement() throws Exception {
-        test.paralleljoin.Utility.redirectStdOut("Output/testHJoinFirstRefinementOut.txt");
+        Utility.redirectStdOut("Output/testHJoinFirstRefinementOut.txt");
         JoinFirstRefinement("parts", "odetails", 0, 1);
         JoinFirstRefinement("client", "viewing", 0, 0);
         JoinFirstRefinement("orders", "odetails", 0, 0);
-        test.paralleljoin.Utility.validate("Output/testHJoinFirstRefinementOut.txt", "Correct/testHJoin.txt", true);
+        Utility.validate("Output/testHJoinFirstRefinementOut.txt", "Correct/testHJoin.txt", true);
     }
 
     public void JoinFirstRefinement(String r1name, String r2name, int jk1, int jk2
@@ -545,11 +544,11 @@ public class MainTest {
 
     @Test
     public void testOptimizedParallelHJoin() throws Exception {
-        test.paralleljoin.Utility.redirectStdOut("Output/testOptimizedParallelHJoinOut.txt");
+        Utility.redirectStdOut("Output/testOptimizedParallelHJoinOut.txt");
         OptimizedParallelHJoin("parts", "odetails", 0, 1);
         OptimizedParallelHJoin("client", "viewing", 0, 0);
         OptimizedParallelHJoin("orders", "odetails", 0, 0);
-        test.paralleljoin.Utility.validate("Output/testOptimizedParallelHJoinOut.txt", "Correct/testHJoin.txt", true);
+        Utility.validate("Output/testOptimizedParallelHJoinOut.txt", "Correct/testHJoin.txt", true);
     }
 
     public void OptimizedParallelHJoin(String r1name, String r2name, int jk1, int jk2
@@ -628,11 +627,11 @@ public class MainTest {
 
     @Test
     public void testUnOptimizedParallelHJoin() throws Exception {
-        test.paralleljoin.Utility.redirectStdOut("Output/testUnOptimizedParallelHJoinOut.txt");
+        Utility.redirectStdOut("Output/testUnOptimizedParallelHJoinOut.txt");
         UnOptimizedParallelHJoin("parts", "odetails", 0, 1);
         UnOptimizedParallelHJoin("client", "viewing", 0, 0);
         UnOptimizedParallelHJoin("orders", "odetails", 0, 0);
-        test.paralleljoin.Utility.validate("Output/testUnOptimizedParallelHJoinOut.txt", "Correct/testHJoin.txt", true);
+        Utility.validate("Output/testUnOptimizedParallelHJoinOut.txt", "Correct/testHJoin.txt", true);
     }
 
     public void UnOptimizedParallelHJoin(String r1name, String r2name, int jk1, int jk2
