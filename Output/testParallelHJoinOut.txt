@@ -1,0 +1,12 @@
+Joining parts with odetails
+
+PNO   PNAME   QOH   PRICE   OLEVEL   ONO   QTY   
+
+Joining client with viewing
+
+CLIENTNO   FNAME   LNAME   TELNO   PREFTYPE   MAXRENT   PROPERTYNO   VIEWDATE   KOMMENT   
+
+Joining orders with odetails
+
+ONO   CNO   ENO   RECEIVED   SHIPPED   PNO   QTY   
+

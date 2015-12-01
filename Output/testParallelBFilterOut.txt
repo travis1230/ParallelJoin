@@ -1,0 +1,28 @@
+Bloom Filtering parts on joinKey 0
+
+PNO     PNAME         QOH   PRICE   OLEVEL   
+------- ------------- ----- ------- -------- 
+10800   Dirty_Harry   140   14.99   30       
+
+Bloom Filtering parts on joinKey 1
+
+PNO     PNAME                  QOH   PRICE   OLEVEL   
+------- ---------------------- ----- ------- -------- 
+10507   Land_Before_Time_II    156   19.99   20       
+10508   Land_Before_Time_III   190   19.99   20       
+
+Bloom Filtering parts on joinKey 2
+
+PNO     PNAME                  QOH   PRICE   OLEVEL   
+------- ---------------------- ----- ------- -------- 
+10800   Dirty_Harry            140   14.99   30       
+10506   Land_Before_Time_I     200   19.99   20       
+10701   When_Harry_Met_Sally   120   19.99   30       
+
+Bloom Filtering client on joinKey 2
+
+CLIENTNO   FNAME   LNAME    TELNO           PREFTYPE   MAXRENT   
+---------- ------- -------- --------------- ---------- --------- 
+CR74       Mike    Richie   01475-392178    House      750       
+CR76       John    Kay      0207-774-5632   Flat       425       
+
